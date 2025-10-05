@@ -1,0 +1,60 @@
+name: Tests
+
+on:
+  workflow_call:
+    inputs:
+      cache-key:
+        description: 'Cache key for node_modules'
+        required: false
+        type: string
+
+jobs:
+  unit-tests:
+    name: Run Unit Tests with Coverage (80% minimum)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Restore node_modules cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            node_modules
+            .yarn/cache
+            .pnp.*
+          key: ${{ inputs.cache-key }}
+          fail-on-cache-miss: true
+
+      - name: Run Unit Tests with Coverage
+        run: yarn test:unit
+
+      - name: Check Unit Test Results
+        if: failure()
+        run: |
+          echo "❌ Unit tests failed"
+          exit 1
+
+      - name: Upload Unit Test Coverage
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unit-coverage
+          path: |
+            coverage/
+            coverage-vitest/
+          retention-days: 7
+
+      - name: Test Summary
+        if: always()
+        run: |
+          echo "🧪 Test Results Summary:"
+          echo "└─ Unit Tests: ${{ job.status }}"

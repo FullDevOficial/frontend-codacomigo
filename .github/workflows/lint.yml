@@ -1,0 +1,37 @@
+name: Lint
+
+on:
+  workflow_call:
+    inputs:
+      cache-key:
+        description: "Cache key for node_modules"
+        required: true
+        type: string
+
+jobs:
+  lint:
+    name: Run ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Restore node_modules cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            node_modules
+            .yarn/cache
+            .pnp.*
+          key: ${{ inputs.cache-key }}
+          fail-on-cache-miss: true
+
+      - name: Run ESLint
+        run: yarn lint
