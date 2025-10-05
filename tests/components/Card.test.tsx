@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
+import userEvent from '@testing-library/user-event';
 import Card from '@/components/Card';
 
 describe('Card Component', () => {
@@ -33,12 +34,13 @@ describe('Card Component', () => {
     expect(image).toBeInTheDocument();
   });
 
-  it('should call onClick when clicked', () => {
+  it('should call onClick when clicked', async () => {
+    const user = userEvent.setup();
     const mockOnClick = vi.fn();
     render(<Card {...mockProps} onClick={mockOnClick} />);
     
     const card = screen.getByText('Test Card').closest('div[class*="cursor-pointer"]');
-    card?.click();
+    await user.click(card!);
     
     expect(mockOnClick).toHaveBeenCalledTimes(1);
   });
