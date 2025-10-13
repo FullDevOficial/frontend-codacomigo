@@ -10,7 +10,6 @@ type PWAConfig = {
   [key: string]: unknown
 }
 
-
   function withPWA(pwaConfig?: PWAConfig): (nextConfig: NextConfig) => NextConfig
   export default withPWA
 }
