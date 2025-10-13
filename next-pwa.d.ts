@@ -7,7 +7,7 @@ type PWAConfig = {
   skipWaiting?: boolean
   disable?: boolean
   buildExcludes?: Array<string | RegExp>   
-  [key: string]: any
+  [key: string]: unknown
 }
 
 
