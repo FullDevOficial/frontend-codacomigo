@@ -3,24 +3,22 @@ import withPWA from "next-pwa";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
 }
 
 export default withPWA({
   dest: 'public',
   register: true,
   skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development',
+  disable: false,
   buildExcludes: [/middleware-manifest\.json$/],
-  runtimeCaching: [
-    {
-      urlPattern: /^https:\/\/fonts\.(?:gstatic|googleapis)\.com\/.*/i,
-      handler: 'CacheFirst',
-      options: {
-        cacheName: 'google-fonts',
-        expiration: { maxEntries: 20, maxAgeSeconds: 60 * 60 * 24 * 30 },
-      },
-    },
+  
+publicExcludes: [],
+  
+  fallbacks: {
+    document: '/public/offline.html', 
+  },
+  
+  runtimeCaching: [ 
     {
       urlPattern: /^https:\/\/cdn\.jsdelivr\.net\/.*/i,
       handler: 'StaleWhileRevalidate',
@@ -34,5 +32,5 @@ export default withPWA({
         expiration: { maxEntries: 60, maxAgeSeconds: 30 * 24 * 60 * 60 },
       },
     },
-  ],
+  ], 
 })(nextConfig)

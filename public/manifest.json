@@ -5,20 +5,8 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0ea5e9",
+  "theme_color": "#e8059cff",
   "orientation": "portrait",
   "scope": "/",
-  "icons": [
-    {
-      "src": "/icons/favicon.ico",
-      "sizes": "192x192",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "/icons/icon-example-950x522",
-      "sizes": "950x522",
-      "type": "image/png"
-    }
-  ],
   "prefer_related_applications": false
 }
