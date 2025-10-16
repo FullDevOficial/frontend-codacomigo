@@ -1,21 +1,27 @@
+
 import type { NextConfig } from "next";
 import withPWA from "next-pwa";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
-}
+};
 
 export default withPWA({
   dest: 'public',
   register: true,
-  skipWaiting: true,
+  skipWaiting: true, 
   disable: false,
-  buildExcludes: [/middleware-manifest\.json$/],
-  
-publicExcludes: [],
-  
+
+  buildExcludes: [
+    /middleware-manifest\.json$/,
+    /app-build-manifest\.json$/,
+    /_middleware\.js$/,
+    /_middleware\.js\.map$/,
+  ],
+
+  publicExcludes: [],
   fallbacks: {
-    document: '/public/offline.html', 
+    document: '/offline.html', 
   },
   
   runtimeCaching: [ 
@@ -33,4 +39,4 @@ publicExcludes: [],
       },
     },
   ], 
-})(nextConfig)
+})(nextConfig);
