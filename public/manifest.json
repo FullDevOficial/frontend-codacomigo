@@ -1,0 +1,12 @@
+{
+  "name": "Coda Comigo",
+  "short_name": "CodaComigo",
+  "description": "Aplicação de componentes reutilizáveis e PWA",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#e8059cff",
+  "orientation": "portrait",
+  "scope": "/",
+  "prefer_related_applications": false
+}
