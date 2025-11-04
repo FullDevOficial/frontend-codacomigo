@@ -31,5 +31,3 @@ declare module 'next-pwa' {
   function withPWA(pwaConfig?: PWAConfig): (nextConfig: NextConfig) => NextConfig
   export default withPWA
 }
-
-
