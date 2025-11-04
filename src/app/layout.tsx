@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   title: "Frontend Coda Comigo",
   description: "Aplicação com componentes reutilizáveis e PWA.",
   manifest: "/manifest.json", 
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+  },
 };
 
 export const viewport: Viewport = {
@@ -29,11 +33,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <head>
-          <meta name="theme-color" content="#e8059cff" />
-          <meta name="apple-mobile-web-app-capable" content="yes" />
-          <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

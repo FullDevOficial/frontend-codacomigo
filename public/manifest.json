@@ -1,7 +1,7 @@
 {
   "name": "Coda Comigo",
   "short_name": "CodaComigo",
-  "description": "Aplicação de namoro",
+  "description": "Aplicação de componentes reutilizáveis e PWA",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
