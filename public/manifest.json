@@ -12,21 +12,45 @@
   "prefer_related_applications": false,
   "icons": [
     {
+      "src": "/icons/Logotipo preto quadrado grande.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/Logotipo preto médio.png",
+      "type": "image/png",
+      "sizes": "256x256",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/Logotipo preto quadrado.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+  {
+      "src": "/icons/Símbolo laranja.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
       "src": "/icons/Símbolo preto.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
     },
     {
-      "src": "/icons/Símbolo laranja.png",
+      "src": "/icons/Logotipo laranja quadrado.png",
       "type": "image/png",
-      "sizes": "512x512",
+      "sizes": "192x192",
       "purpose": "any"
-    },  
+    },
     {
-      "src": "/icons/Logotipo preto.png",
+      "src": "/icons/Logotipo preto quadrado.png",
       "type": "image/png",
-      "sizes": "512x512",
+      "sizes": "192x192",
       "purpose": "any"
     },
     {
@@ -34,21 +58,9 @@
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any"
-    },
-        {
-      "src": "/icons/Logotipo laranja quadrado.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any"
-    },
-        {
-      "src": "/icons/Logotipo preto quadrado.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any"
     }
   ],
-   "screenshots": [
+  "screenshots": [
     {
       "src": "/screenshots/Login.png",
       "sizes": "1280x720",
@@ -62,6 +74,5 @@
       "form_factor": "narrow"
     }
   ],
-    "display_override": ["window-controls-overlay"]
+  "display_override": ["window-controls-overlay"]
 }
-
