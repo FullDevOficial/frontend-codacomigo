@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import RegisterPage from './register-page'
+import RegisterPage from './register'
 
 const meta: Meta<typeof RegisterPage> = {
   title: 'Pages/RegisterPage',

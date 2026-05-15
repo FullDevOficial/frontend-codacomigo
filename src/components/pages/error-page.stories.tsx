@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import ErrorPage from './error-page'
+import ErrorPage from './error'
 
 const meta: Meta<typeof ErrorPage> = {
   title: 'Pages/ErrorPage',
