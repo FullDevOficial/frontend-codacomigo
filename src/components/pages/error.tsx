@@ -12,7 +12,7 @@ export default function ErrorPage() {
         size="xs"
         weight="bold"
         as="h1"
-        className="text-[#FB433C] mb-1"
+        className="text-red-500 mb-1"
       >
         Seu PR quebrou a main...
       </Heading>
