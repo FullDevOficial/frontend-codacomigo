@@ -1,12 +1,14 @@
-'use client'
+'use client';
 
-import { signIn } from 'next-auth/react'
+import { signIn } from 'next-auth/react';
 
 export function SignInWithGithub() {
   const handleSignIn = () => {
-    signIn("github")
-  }
+    signIn('github');
+  };
   return (
-    <button className="p-4 rounded border border-gray-100 cursor-pointer" onClick={handleSignIn}>Sign In With Github</button>
-  )
+    <button className="cursor-pointer rounded border border-gray-100 p-4" onClick={handleSignIn}>
+      Sign In With Github
+    </button>
+  );
 }

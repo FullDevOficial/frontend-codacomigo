@@ -23,8 +23,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#eab5cc" />
       </head>
-      <body className='flex items-center justify-center bg-neutral-800'>
-        <main className='w-full max-w-lg h-screen bg-neutral-900 text-white'>{children}</main>
+      <body className="flex items-center justify-center bg-neutral-800">
+        <main className="h-screen w-full max-w-lg bg-neutral-900 text-white">{children}</main>
       </body>
     </html>
   );

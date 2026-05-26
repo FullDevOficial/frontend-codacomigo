@@ -7,7 +7,6 @@ import importPlugin from 'eslint-plugin-import';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import storybook from 'eslint-plugin-storybook';
 import unusedImports from 'eslint-plugin-unused-imports';
-
 const UNUSED_VARS_CONFIG = {
   vars: 'all',
   varsIgnorePattern: '^_',

@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import { Logo } from './logo'
+import { Logo } from './logo';
 
 const meta: Meta<typeof Logo> = {
   title: 'Design System/Brand/Logo',
@@ -14,16 +14,16 @@ const meta: Meta<typeof Logo> = {
       options: ['sm', 'lg'],
     },
   },
-}
+};
 
-export default meta
-type Story = StoryObj<typeof Logo>
+export default meta;
+type Story = StoryObj<typeof Logo>;
 
 export const Playground: Story = {
   args: {
     size: 'sm',
   },
-}
+};
 
 export const Sizes: Story = {
   render: () => (
@@ -32,4 +32,4 @@ export const Sizes: Story = {
       <Logo size="lg" />
     </div>
   ),
-}
+};

@@ -7,11 +7,11 @@ const elements = {
 
 export default function Home() {
   return (
-    <div className="p-2 h-screen flex flex-col">
-      <header className='flex w-full justify-end'>
+    <div className="flex h-screen flex-col p-2">
+      <header className="flex w-full justify-end">
         <SignOut />
       </header>
-      <main className="flex-1 flex items-center justify-center">
+      <main className="flex flex-1 items-center justify-center">
         <Heading as="h1" size="xl">
           {elements.title}
         </Heading>

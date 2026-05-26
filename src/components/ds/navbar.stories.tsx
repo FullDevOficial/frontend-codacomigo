@@ -8,13 +8,13 @@ const meta: Meta<typeof Navbar> = {
   component: Navbar,
   tags: ['autodocs'],
   args: {
-    active: "/profile",
+    active: '/profile',
   },
   argTypes: {
     active: {
       control: 'select',
       description: 'Ativa o item da Navbar com base no href',
-      options: ["/profile", "/conversations", "/likes", "/settings"],
+      options: ['/profile', '/conversations', '/likes', '/settings'],
     },
   },
   decorators: [

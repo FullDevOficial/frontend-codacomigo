@@ -1,13 +1,13 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth, { AuthOptions } from 'next-auth';
 
-import { oauthLogin } from "@/lib/auth/oauth-login";
-import { providers } from "@/lib/auth/providers";
+import { oauthLogin } from '@/lib/auth/oauth-login';
+import { providers } from '@/lib/auth/providers';
 
 export const authOptions: AuthOptions = {
   providers,
 
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days
     updateAge: 24 * 60 * 60, // 24 hours
   },
@@ -17,26 +17,26 @@ export const authOptions: AuthOptions = {
     async jwt({ token, user, account }) {
       if (user && account) {
         try {
-          console.log("User authenticated with provider:", {
-          provider: account.provider,
-          providerAccountId: account.providerAccountId,
-          name: user.name,
-          email: user.email,
-          image: user.image,
-        });
+          console.log('User authenticated with provider:', {
+            provider: account.provider,
+            providerAccountId: account.providerAccountId,
+            name: user.name,
+            email: user.email,
+            image: user.image,
+          });
           const userAuthenticated = await oauthLogin({
-          provider: account.provider,
-          providerAccountId: account.providerAccountId,
-          name: user.name,
-          email: user.email,
-          image: user.image,
-        });
+            provider: account.provider,
+            providerAccountId: account.providerAccountId,
+            name: user.name,
+            email: user.email,
+            image: user.image,
+          });
 
           token.id = userAuthenticated.id;
           token.name = userAuthenticated.name;
           token.role = userAuthenticated.role;
         } catch (error) {
-          console.error("Erro no login OAuth:", error);
+          console.error('Erro no login OAuth:', error);
         }
       }
 
@@ -59,4 +59,3 @@ export const authOptions: AuthOptions = {
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
-

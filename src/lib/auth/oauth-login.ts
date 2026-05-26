@@ -13,19 +13,17 @@ type OAuthLoginResponse = {
   role?: string;
 };
 
-export async function oauthLogin(
-  input: OAuthLoginInput
-): Promise<OAuthLoginResponse> {
+export async function oauthLogin(input: OAuthLoginInput): Promise<OAuthLoginResponse> {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users/oauth`, {
-    method: "POST",
+    method: 'POST',
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify(input),
   });
 
   if (!response.ok) {
-    throw new Error("Failed to authenticate user with backend");
+    throw new Error('Failed to authenticate user with backend');
   }
 
   return response.json();
