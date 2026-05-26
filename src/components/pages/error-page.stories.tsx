@@ -1,6 +1,6 @@
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
-import ErrorPage from './error-page'
+import ErrorPage from './error-page';
 
 const meta: Meta<typeof ErrorPage> = {
   title: 'Pages/ErrorPage',
@@ -8,10 +8,10 @@ const meta: Meta<typeof ErrorPage> = {
   parameters: {
     layout: 'fullscreen',
   },
-}
+};
 
-export default meta
+export default meta;
 
-type Story = StoryObj<typeof ErrorPage>
+type Story = StoryObj<typeof ErrorPage>;
 
-export const Default: Story = {}
+export const Default: Story = {};
