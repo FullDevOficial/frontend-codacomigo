@@ -7,7 +7,8 @@ import { Button } from '@/components/ui/button'
 import { SubmitButton } from '../ds/submit-button'
 import { Input } from '../ds/input'
 import { FcGoogle } from 'react-icons/fc'
-import { FaFacebook } from 'react-icons/fa'
+import { FaGithub } from 'react-icons/fa'
+import { DateInput } from "@/components/ds/date-input"
 
 export default function RegisterPage() {
     return (
@@ -53,7 +54,7 @@ export default function RegisterPage() {
                     >
                         Data de nascimento
                      </Text>
-                     <Input placeholder="29/08/2000" className="w-full border-[1.5px] rounded-full h-12 shadow-none placeholder:text-zinc-300 placeholder:font-inter placeholder:font-light" />
+                       <DateInput />
                  </div>
 
                     <div className="w-full flex flex-col items-start mb-4">
@@ -94,8 +95,8 @@ export default function RegisterPage() {
                         Google
                     </Button>
                     <Button onClick={() => {}} size="social" variant="social" className="flex-1 rounded-2xl border-none bg-zinc-200">
-                        <FaFacebook className="size-6 shrink-0 text-blue-600" />
-                        Facebook
+                        <FaGithub className="size-6 shrink-0 text-gray-800" />
+                        Github
                     </Button>
                 </div>
             </div>
