@@ -137,43 +137,44 @@ function Calendar({
     components: {
 
       Dropdown: ({ value, onChange, options }: any) => (
-  <Select
-    value={String(value)}
-    onValueChange={(v) =>
-  onChange?.({
-    target: {
-      value: v,
+ 
+        <Select
+          value={String(value)}
+          onValueChange={(v) =>
+          onChange?.({
+          target: {
+          value: v,
     },
-  } as React.ChangeEvent<HTMLSelectElement>)
+   } as React.ChangeEvent<HTMLSelectElement>)
 }
-  >
+    >
     <SelectTrigger
-  className="
-    h-8
-    min-w-[80px]
-    rounded-full
-    border-zinc-200
-    text-xs
-    font-medium
-    shadow-none
-  "
->
+      className="
+      h-8
+      min-w-[80px]
+      rounded-full
+      border-zinc-200
+      text-xs
+      font-medium
+      shadow-none
+    "
+    >
       <SelectValue
-  placeholder={
-    options?.find((o: any) => String(o.value) === String(value))?.label
-  }
-/>
+        placeholder={
+        options?.find((o: any) => String(o.value) === String(value))?.label
+      }
+    />
     </SelectTrigger>
 
     <SelectContent>
       {options?.map((option: any) => (
         <SelectItem
-  key={option.value}
-  value={String(option.value)}
-  className="text-xs"
->
-  {option.label}
-</SelectItem>
+        key={option.value}
+        value={String(option.value)}
+        className="text-xs"
+      >
+        {option.label}
+      </SelectItem>
       ))}
     </SelectContent>
   </Select>
