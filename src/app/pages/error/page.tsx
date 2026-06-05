@@ -1,4 +1,4 @@
-import ErrorPage from '@/components/pages/error-page'
+import ErrorPage from '@/components/pages/error'
 
 export default function Page() {
   return <ErrorPage />

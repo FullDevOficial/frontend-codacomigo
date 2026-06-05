@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-
+@import 'react-day-picker/style.css';
 :root {
   --radius: 0.625rem;
 
@@ -148,4 +148,44 @@
 
 body {
   font-family: var(--font-inter), Arial, sans-serif;
+}
+
+input[type="date"] {
+  color: #a1a1aa;
+}
+
+input[type="date"]::-webkit-datetime-edit {
+  color: #a1a1aa;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+
+.rdp-today:not(.rdp-outside) {
+  color: black !important;
+}
+
+.rdp-selected .rdp-day_button {
+  background-color: #fecaca4a !important; 
+  color: black !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.rdp-day_button:focus,
+.rdp-day_button:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.rdp-selected .rdp-day_button {
+  font-weight: normal !important;
 }
