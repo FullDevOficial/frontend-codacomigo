@@ -23,13 +23,10 @@ export function DateInput() {
   const handleDateChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    // mantém apenas números
     let value = e.target.value.replace(/\D/g, "")
 
-    // máximo: ddmmaaaa
     value = value.slice(0, 8)
 
-    // monta a máscara
     if (value.length > 4) {
       value = `${value.slice(0, 2)}/${value.slice(2, 4)}/${value.slice(4, 8)}`
     } else if (value.length > 2) {
@@ -38,7 +35,6 @@ export function DateInput() {
 
     setInputValue(value)
 
-    // sincroniza o calendário quando a data estiver completa
     if (value.length === 10) {
       const [day, month, year] = value.split("/").map(Number)
 
@@ -73,25 +69,25 @@ export function DateInput() {
         </div>
       </PopoverTrigger>
 
-      <PopoverContent className="w-auto p-0">
+      <PopoverContent className=" w-auto p-1 border border-gray-200 rounded-xl shadow-md">
         <Calendar
-  mode="single"
-  selected={date}
-  onSelect={(selectedDate) => {
-    if (!selectedDate) return
+          mode="single"
+          selected={date}
+          onSelect={(selectedDate) => {
+             if (!selectedDate) return
 
-    setDate(selectedDate)
+               setDate(selectedDate)
 
-    setInputValue(
-      format(selectedDate, "dd/MM/yyyy", {
-        locale: ptBR,
-      })
-    )
-  }}
-  captionLayout="dropdown"
-  disabled={{
-    before: new Date(1900, 0, 1),
-    after: new Date(),
+               setInputValue(
+                format(selectedDate, "dd/MM/yyyy", {
+                 locale: ptBR,
+            })
+         )
+    }}
+          captionLayout="dropdown"
+          disabled={{
+          before: new Date(1900, 0, 1),
+          after: new Date(),
   }}
 />
       </PopoverContent>

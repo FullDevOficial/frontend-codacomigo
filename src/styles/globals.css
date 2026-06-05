@@ -168,3 +168,24 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   position: absolute;
   cursor: pointer;
 }
+
+.rdp-today:not(.rdp-outside) {
+  color: black !important;
+}
+
+.rdp-selected .rdp-day_button {
+  background-color: #fecaca4a !important; 
+  color: black !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.rdp-day_button:focus,
+.rdp-day_button:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.rdp-selected .rdp-day_button {
+  font-weight: normal !important;
+}

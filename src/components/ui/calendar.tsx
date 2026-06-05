@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { ptBR } from "date-fns/locale"
 
 import {
   ChevronDownIcon,
@@ -10,7 +11,15 @@ import {
 import { DayButton, DayPicker, getDefaultClassNames, type ClassNames, type DayPickerProps } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button} from "@/components/ui/button"
+
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 
 type CalendarProps = DayPickerProps & {
   buttonVariant?: React.ComponentProps<typeof Button>["variant"]
@@ -20,7 +29,7 @@ function Calendar({
   className,
   classNames,
   showOutsideDays = true,
-  captionLayout = "label",
+  captionLayout = "dropdown",
   buttonVariant = "ghost",
   formatters,
   components,
@@ -29,12 +38,12 @@ function Calendar({
   const defaultClassNames = getDefaultClassNames()
 
   const mergedClassNames = {
-    root: cn("w-fit", defaultClassNames.root),
+    root: cn("inline-block", defaultClassNames.root),
     months: cn(
-      "relative flex flex-col gap-4 md:flex-row",
+      "relative flex flex-col gap-0 md:flex-row",
       defaultClassNames.months
     ),
-    month: cn("flex w-full flex-col gap-4", defaultClassNames.month),
+    month: cn(("flex flex-col gap-0"), defaultClassNames.month),
     nav: cn(
       "absolute inset-x-0 top-0 flex w-full items-center justify-between gap-1",
       defaultClassNames.nav
@@ -46,9 +55,9 @@ function Calendar({
       defaultClassNames.month_caption
     ),
     dropdowns: cn(
-      "flex h-[--cell-size] w-full items-center justify-center gap-1 text-[11px] font-medium text-red-700",
-      defaultClassNames.dropdowns
-    ),
+  "flex h-[--cell-size] w-full items-center justify-center gap-2 text-sm font-medium",
+  defaultClassNames.dropdowns
+),
     dropdown_root: cn(
      "relative rounded-lg border border-gray-200 bg-white shadow-none",
       defaultClassNames.dropdown_root
@@ -69,7 +78,7 @@ function Calendar({
       "text-muted-foreground flex-1 select-none rounded-md text-[10px] font-normal",
       defaultClassNames.weekday
     ),
-    week: cn("mt-2 flex w-full", defaultClassNames.week),
+    week: cn("mt-0.2 flex w-full", defaultClassNames.week),
     week_number_header: cn(
       "w-[--cell-size] select-none",
       defaultClassNames.week_number_header
@@ -89,7 +98,7 @@ function Calendar({
     range_middle: cn("rounded-none", defaultClassNames.range_middle),
     range_end: cn("bg-accent rounded-r-md", defaultClassNames.range_end),
     today: cn(
-      "bg-red-100 text-red-700 rounded-md data-[selected=true]:rounded-none",
+      "text-black-700 rounded-md data-[selected=true]:rounded-none",
       defaultClassNames.today
     ),
     outside: cn(
@@ -105,21 +114,70 @@ function Calendar({
   } as Partial<ClassNames>
 
   const dayPickerProps = {
+    locale: ptBR,
     showOutsideDays,
     className: cn(
-    "bg-background group/calendar p-1 [--cell-size:1rem] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
+    "bg-background group/calendar p-1 [--cell-size:1.6rem] [[data-slot=card-content]_&]:bg-transparent [[data-slot=popover-content]_&]:bg-transparent",
       String.raw`rtl:**:[.rdp-button\_next>svg]:rotate-180`,
       String.raw`rtl:**:[.rdp-button\_previous>svg]:rotate-180`,
       className
     ),
     captionLayout,
     formatters: {
-      formatMonthDropdown: (date: Date) =>
-        date.toLocaleString("default", { month: "short" }),
+       formatMonthDropdown: (date: Date) => {
+        const months = [
+         "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+        "Jul", "Ago", "Set", "Out", "Nov", "Dez"
+        ]
+      return months[date.getMonth()]
+    },
       ...formatters,
     },
     classNames: mergedClassNames,
     components: {
+
+      Dropdown: ({ value, onChange, options }: any) => (
+  <Select
+    value={String(value)}
+    onValueChange={(v) =>
+  onChange?.({
+    target: {
+      value: v,
+    },
+  } as React.ChangeEvent<HTMLSelectElement>)
+}
+  >
+    <SelectTrigger
+  className="
+    h-8
+    min-w-[80px]
+    rounded-full
+    border-zinc-200
+    text-xs
+    font-medium
+    shadow-none
+  "
+>
+      <SelectValue
+  placeholder={
+    options?.find((o: any) => String(o.value) === String(value))?.label
+  }
+/>
+    </SelectTrigger>
+
+    <SelectContent>
+      {options?.map((option: any) => (
+        <SelectItem
+  key={option.value}
+  value={String(option.value)}
+  className="text-xs"
+>
+  {option.label}
+</SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+),
       Root: ({ className, rootRef, ...props }) => {
         return (
           <div
@@ -184,6 +242,7 @@ function CalendarDayButton({
     if (modifiers.focused) ref.current?.focus()
   }, [modifiers.focused])
 
+  console.log(className)
   return (
     <Button
       ref={ref}
@@ -200,8 +259,7 @@ function CalendarDayButton({
       data-range-end={modifiers.range_end}
       data-range-middle={modifiers.range_middle}
       className={cn(
-       "data-[selected-single=true]:bg-red-700 data-[selected-single=true]:text-white data-[range-middle=true]:bg-red-100 data-[range-middle=true]:text-red-700 data-[range-start=true]:bg-red-700 data-[range-start=true]:text-white data-[range-end=true]:bg-red-700 data-[range-end=true]:text-white group-data-[focused=true]/day:border-red-300 group-data-[focused=true]/day:ring-red-200 flex aspect-square h-auto w-full min-w-[--cell-size] flex-col gap-1 font-normal leading-none text-[10px] data-[range-end=true]:rounded-md data-[range-middle=true]:rounded-none data-[range-start=true]:rounded-md group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-[2px] [&>span]:text-[9px] [&>span]:opacity-70",
-        defaultClassNames.day,
+        "h-6 w-6 rounded-full border-0 shadow-none ring-0 data-[selected-single=true]:bg-red-100 data-[selected-single=true]:text-black hover:bg-red-50 hover:text-black focus:ring-0 focus-visible:ring-0 focus-visible:outline-none",
         className
       )}
       {...props}
