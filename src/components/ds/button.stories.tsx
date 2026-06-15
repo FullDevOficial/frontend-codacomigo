@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import FacebookIcon from '../icons/facebook';
 import GoogleIcon from '../icons/google';
-import { Button } from '../ui/button';
+import { Button } from './button';
 
 const meta: Meta<typeof Button> = {
   title: 'Design System/Button',
@@ -11,7 +11,7 @@ const meta: Meta<typeof Button> = {
   argTypes: {
     label: {
       control: 'text',
-      description: 'Conteúdo do botao',
+      description: 'Conteúdo do botão',
     },
     disabled: {
       control: 'boolean',
@@ -39,12 +39,8 @@ export const Google: Story = {
   args: {
     variant: 'social',
     size: 'social',
-    children: (
-      <>
-        <GoogleIcon className="size-6 shrink-0" />
-        Google
-      </>
-    ),
+    label: 'Google',
+    icon: <GoogleIcon className="size-6 shrink-0" />,
   },
 };
 
@@ -52,11 +48,7 @@ export const Facebook: Story = {
   args: {
     variant: 'social',
     size: 'social',
-    children: (
-      <>
-        <FacebookIcon className="size-6 shrink-0" />
-        Facebook
-      </>
-    ),
+    label: 'Facebook',
+    icon: <FacebookIcon className="size-6 shrink-0" />,
   },
 };
