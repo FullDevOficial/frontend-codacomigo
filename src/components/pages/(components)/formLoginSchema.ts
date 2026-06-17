@@ -1,8 +1,3 @@
-// validação form react hook form - gerencia
-// zod validation schema - validação de dados
-// flex
-// as coisas são caixas!! pensar em caixas
-
 import { z } from 'zod';
 
 export const formLoginSchema = z.object({
