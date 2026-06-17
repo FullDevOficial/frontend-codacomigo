@@ -25,6 +25,7 @@ export const textVariants = cva('', {
       black: 'text-black',
       brand: 'text-orange-700',
       colored: 'text-red-500',
+      gray: 'text-gray-400',
     },
   },
   defaultVariants: {
